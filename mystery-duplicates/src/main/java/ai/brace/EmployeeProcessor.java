@@ -32,6 +32,8 @@ public class EmployeeProcessor
             stream.forEach(line -> {
                 final String[] elements = line.split(",");
                 final Employee emp = new Employee(elements[0], elements[1], elements[2], elements[3]);
+                // Employee must implement the equals and hashcode methods to properly be used in this map else the object's
+                // memory location is used for equality and hashcode uses a random integer
                 duplicateCount.put(emp, duplicateCount.getOrDefault(emp, 0) + 1);
             });
         }
